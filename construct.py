@@ -67,6 +67,8 @@ def construct():
   # Default steps
 
   info         = Step( 'info',                          default=True )
+  iflow        = Step( 'cadence-innovus-flowsetup',     default=True )
+  init         = Step( 'cadence-innovus-init',          default=True )
 
   #-----------------------------------------------------------------------
   # Graph -- Add nodes
@@ -75,16 +77,24 @@ def construct():
   g.add_step( info              )
   g.add_step( constraints       )
   g.add_step( dc                )
+  g.add_step( iflow             )
+  g.add_step( init              )
 
   #-----------------------------------------------------------------------
   # Graph -- Add edges
   #-----------------------------------------------------------------------
 
   # Connect by name
-
   g.connect_by_name( adk,      dc           )
+  g.connect_by_name( adk,      iflow        )
+  g.connect_by_name( adk,      init         )
 
-  g.connect_by_name( constraints, dc        )
+  g.connect_by_name( constraints,   dc        )
+
+  g.connect_by_name( dc,       iflow        )
+  g.connect_by_name( dc,       init         )
+
+  g.connect_by_name( iflow,    init         )
 
 
   #-----------------------------------------------------------------------
@@ -97,8 +107,6 @@ def construct():
   # steps, we modify the order parameter for that node which determines
   # which scripts get run and when they get run.
 
-  # DC needs these param to set the NO_CGRA macro
-  dc.update_params({'soc_only': parameters['soc_only']}, True)
 
   return g
 

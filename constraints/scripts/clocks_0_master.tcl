@@ -58,5 +58,6 @@ foreach idx $clk_div_list {
   create_generated_clock -name by_${idx}_clk \
       -source [get_pins u_core/u_platform_ctrl/u_clk_ctrl/u_clk_switch/CLK_OUT] \
       -divide_by ${idx} \
+      -master_clock m_clk_1 \
       [get_pins u_core/u_platform_ctrl/u_clk_ctrl/u_clk_div/CLK_by_${idx}]
 }
