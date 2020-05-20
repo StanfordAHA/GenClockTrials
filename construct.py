@@ -71,6 +71,8 @@ def construct():
   iflow        = Step( 'cadence-innovus-flowsetup',     default=True )
   init         = Step( 'cadence-innovus-init',          default=True )
 
+  init.extend_inputs( custom_init.all_outputs() )
+
   #-----------------------------------------------------------------------
   # Graph -- Add nodes
   #-----------------------------------------------------------------------

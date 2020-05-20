@@ -21,14 +21,12 @@ outputs:
   - design.v
   - design.sdc
   - design.namemap
-  - add-endcaps-welltaps.tcl
 
 #-------------------------------------------------------------------------
 # Commands
 #-------------------------------------------------------------------------
 
 commands:
-  - cp add-endcaps-welltaps.tcl outputs/
   - bash run.sh
 
 #-------------------------------------------------------------------------
