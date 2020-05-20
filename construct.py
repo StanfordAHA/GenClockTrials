@@ -63,6 +63,7 @@ def construct():
 
   constraints    = Step( this_dir + '/constraints'                         )
   dc             = Step( this_dir + '/custom-dc-synthesis'                 )
+  custom_init    = Step( this_dir + '/custom-init'                         )
 
   # Default steps
 
@@ -78,6 +79,7 @@ def construct():
   g.add_step( constraints       )
   g.add_step( dc                )
   g.add_step( iflow             )
+  g.add_step( custom_init       )
   g.add_step( init              )
 
   #-----------------------------------------------------------------------
@@ -95,6 +97,7 @@ def construct():
   g.connect_by_name( dc,       init         )
 
   g.connect_by_name( iflow,    init         )
+  g.connect_by_name( custom_init,    init   )
 
 
   #-----------------------------------------------------------------------

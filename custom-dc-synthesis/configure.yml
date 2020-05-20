@@ -28,7 +28,7 @@ outputs:
 #-------------------------------------------------------------------------
 
 commands:
-  - cp add-endcaps-welltaps.tcl output/
+  - cp add-endcaps-welltaps.tcl outputs/
   - bash run.sh
 
 #-------------------------------------------------------------------------
